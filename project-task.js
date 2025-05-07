@@ -43,31 +43,32 @@ but it contains multiple syntax errors that prevent it from being parsed.
 // ============================================
 // 🔍 Provided JSON File with Errors
 // ============================================
-
-const invalidBookingJSON = `
+//should remove template literal, this will not parse with JSON per stackoverflow. ({ // could use JSON.stringify(). Remove JSON from invalidBooking, replaced JSON, removed const
+const invalidBookingJSON =
 {
   "hotelName": "Grand City Hotel",
-  "checkInDate": "2024-05-15"
+  "checkInDate": "2024-05-15", //missing comma
   "checkOutDate": "2024-05-20",
   "guests": [
-    {
-      name: "Alice Johnson",
+      {
+      "name": "Alice Johnson", //name needed double quotes, added
       "age": 30,
-      "email": "alice.johnson@example.com"
-    },
-    {
+      "email": "alice.johnson@example.com", // missing comma, added comma
+      },
+      {
       "name": "Bob Smith",
-      "age": undefined,
-      "email": "bob.smith@example"
-    }
+      "age": 57, // age should be a number
+      "email": "bob.smith@example.com", //email missing .com and line missing comma, added comma. 
+      }
   ],
   "roomDetails": {
     "type": "Suite",
     "pricePerNight": 200,
-    "amenities": ["WiFi", "Breakfast", "Parking",]
-  }
-}
-`;
+    "amenities": ["WiFi", "Breakfast", "Parking"],//removed extra comma after parking
+    },
+  
+};
+
 
 
 // ============================================
@@ -91,11 +92,15 @@ const invalidBookingJSON = `
 💬 Reflect and answer the following:
 
 1️⃣ What tools or techniques did you use to identify the errors?
+My approach was to take it one line at at time. 
 
 2️⃣ How did you confirm that your corrected JSON file was valid?
+using jsonlint.com, stackoverflow, and W3 schools helped me identfy the errors. 
 
 3️⃣ Which errors were the most difficult to spot? Why?
+bracket and brace placement
 
 4️⃣ What strategies can help you avoid these kinds of errors in the future?
    (e.g., syntax highlighting, linters, writing JSON by example)
+   using the highlighter has been very helpful when keeping thing organized/ 
 */
